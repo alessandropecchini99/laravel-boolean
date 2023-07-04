@@ -16,10 +16,6 @@
             <div class="invalid-feedback">
                 @error('title')
                     {{ $message }}
-                    @else
-                        @foreach ($errors->get('title') as $error)
-                            {{ $error }}
-                        @endforeach
                 @enderror
             </div>
         </div>
