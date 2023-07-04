@@ -120,7 +120,7 @@ class TasksController extends Controller
 
         $task->update();
 
-        return to_route('tasks.show', ['task' => $task->id]);
+        return to_route('tasks.show', ['task' => $task->id])->with('update_success', 'Todo modificato con successo!');
     }
 
     /**
@@ -134,11 +134,11 @@ class TasksController extends Controller
         $task = Task::find($id);
 
         if ($task === null) {
-            return redirect()->route('tasks.index')->with('error', 'Task not found!');
+            return redirect()->route('tasks.index')->with('delete_success', $task, 'Todo non trovato...');
         }
 
         $task->delete();
 
-        return redirect()->route('tasks.index')->with('status', 'Task deleted successfully!');
+        return redirect()->route('tasks.index')->with('delete_success', $task, 'Todo cancellato con successo!');
     }
 }
