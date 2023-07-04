@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TasksController extends Controller
 {
@@ -37,7 +37,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        return view('comics.create');
+        return view('tasks.create');
     }
 
     /**
@@ -98,17 +98,18 @@ class TasksController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        // $request->validate($this->validations);    $validation da aggiungere
+        $request->validate($this->validations);
 
         $data = $request->all();
 
-        $task->title = $data['title'];
-        $task->details = $data['details'];
-        $task->image = $data['image'];
-        $task->creation_date = $data['creation_date'];
-        $task->expire_date = $data['expire_date'];
-        $task->done = $data['done'];
-        $task->urgent = $data['urgent'];
+        $task->done              = $data['done'];
+        $task->urgent            = $data['urgent'];
+        $task->creation_date     = $data['creation_date'];
+        $task->expire_date       = $data['expire_date'];
+        $task->title             = $data['title'];
+        $task->details           = $data['details'];
+        $task->image             = $data['image'];
+
         $task->update();
 
         return to_route('tasks.show', ['task' => $task->id]);
