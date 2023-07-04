@@ -9,35 +9,23 @@
 </head>
 
 <body>
-    <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/tasks"><img src="{{ Vite::asset('resources/img/logo.svg') }}" alt=""> To Do List</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                      <ul class="navbar-nav">
-                        <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="/about">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="tasks/create">Add</a>
-                        </li>
-                      </ul>
-                  </div>
-                </div>
-              </nav>
-    </header>
+<header>
+    <nav class="nav__bar d-flex align-items-center">
+        <div class="container d-flex justify-content-between h-100 align-items-center">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="/">
+                <img src="{{ Vite::asset('resources/img/logo.svg') }}" alt="">
+            </a>
+            <h3 class="m-0 fw-bold">To Do List</h3>
+            @include('partials.navigation')
+        </div>
+    </nav>
+</header>
 
-    <div class="container">     
-        <main>
-            @yield('contents')
-        </main>
-    </div>
+<div class="container">
+    <main>
+        @yield('contents')
+    </main>
+</div>
 </body>
 
 </html>
