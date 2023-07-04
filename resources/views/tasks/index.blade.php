@@ -38,22 +38,27 @@
 							</form>
 						</td>
 						<td>
-                            <div class="mb-4">
-                                <label for="done" class="form-label">Done</label>
-                                <input type="hidden" name="done" value="0">
-                                <input type="checkbox" class="form-check-input @error('done') is-invalid @enderror"
-                                    id="done" name="done" value="1" @checked(old('done', $task->done))>
-                                <div class="invalid-feedback">
-                                    @error('done')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    <a href="{{ route('tasks.create') }}" class="btn btn-primary p-3 my-4">Aggiungi un nuovo to Do -></a>
+							<div class="mb-4">
+								<label for="done" class="form-label">Done</label>
+								<form method="POST" action="{{ route('tasks.toggle_done', ['task' => $task->id]) }}">
+									@csrf
+									<input type="hidden" name="done" value="0">
+									<input type="checkbox" class="form-check-input @error('done') is-invalid @enderror" id="done"
+										name="done" value="1" @if (old('done', $task->done)) checked @endif>
+									<div class="invalid-feedback">
+										@error('done')
+											{{ $message }}
+										@enderror
+									</div>
+									<button type="submit" class="btn btn-warning">Update</button>
+								</form>
+							</div>
+
+						</td>
+					</tr>
+				@endforeach
+			</tbody>
+		</table>
+	</div>
+	<a href="{{ route('tasks.create') }}" class="btn btn-primary p-3 my-4">Aggiungi un nuovo to Do -></a>
 @endsection

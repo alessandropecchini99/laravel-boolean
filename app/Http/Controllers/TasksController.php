@@ -141,4 +141,12 @@ class TasksController extends Controller
 
         return redirect()->route('tasks.index')->with('delete_success', $task, 'Todo cancellato con successo!');
     }
+
+    public function toggleDone(Request $request, Task $task)
+    {
+        $task->done = $request->input('done');
+        $task->save();
+
+        return redirect()->route('tasks.index')->with('update_success', 'Task updated successfully!');
+    }
 }
