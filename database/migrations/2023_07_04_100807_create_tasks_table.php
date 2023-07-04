@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+
+            $table->boolean('done');
+            $table->boolean('urgent');
+            $table->date('creation_date');
+            $table->date('expire_date');
+            $table->string('title', 50);
+            $table->text('details');
+            $table->string('image', 300);
+
             $table->timestamps();
         });
     }
