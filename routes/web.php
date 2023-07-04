@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
-Route::resource('comics', TaskController::class);
+Route::resource('tasks', TaskController::class);
