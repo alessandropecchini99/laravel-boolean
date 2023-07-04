@@ -19,10 +19,9 @@
 				<li class="list-group-item"><span>Title:</span> {{ $task->title }}</li>
 				<li class="list-group-item"><span>Details:</span> {!! $task->details !!}</li>
 				<li class="list-group-item"><span>Creation Date:</span> {{ $task->creation_date }}</li>
-				<li class="list-group-item"><span>Expire Date:</span> {{ $task->expired_date }}</li>
-				<li class="list-group-item"><span>Done:</span> {{ $task->done }}</li>
-				<li class="list-group-item"><span>Urgent:</span> {{ $task->urgent }}</li>
-				<li>prova</li>
+				<li class="list-group-item"><span>Expire Date:</span> {{ $task->expire_date }}</li>
+				<li class="list-group-item"><span>Done:</span> {{ $task->done ? '✅' : '❌'}}</li>
+				<li class="list-group-item"><span>Urgent:</span> {{ $task->urgent ? '✅' : '❌'}}</li>
 			</ul>
 
 			<a class="btn btn-secondary" href="/tasks">Back</a>
