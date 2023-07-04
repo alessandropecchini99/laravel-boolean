@@ -106,7 +106,7 @@ class TasksController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $request->validate($this->validations);
+        $request->validate($this->validations, $this->validationMessages);
 
         $data = $request->all();
 
