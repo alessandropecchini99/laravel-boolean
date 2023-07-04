@@ -22,9 +22,7 @@
 
         <div class="mb-4">
             <label for="details" class="form-label">Details</label>
-            <textarea class="form-control @error('details') is-invalid @enderror" id="details" rows="3" name="details">
-        {{ old('details') }}
-        </textarea>
+            <textarea class="form-control @error('details') is-invalid @enderror" id="details" rows="3" name="details">{{ old('details') }}</textarea>
         </div>
 
         <div class="mb-4">
