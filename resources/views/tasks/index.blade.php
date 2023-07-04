@@ -1,13 +1,14 @@
 @extends('layouts.base')
 
 @section('contents')
-	{{-- Messaggi di conferma cancellazione --}}
+	{{-- Messaggio di conferma cancellazione --}}
 	@if (session('delete_success'))
 		@php $task = session('delete_success') @endphp
 		<div class="alert alert-danger">
 			Il Todo "{{ $task->title }}" è stato eliminato
 		</div>
 	@endif
+
 	<div class="d-flex justify-content-center mt-5">
 		<table class="table table-secondary table-striped table-hover">
 			<thead>
