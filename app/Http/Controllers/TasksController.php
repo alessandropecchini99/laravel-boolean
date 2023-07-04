@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Task;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class TasksController extends Controller
 {
@@ -122,8 +122,16 @@ class TasksController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+
+        if ($task === null) {
+            return redirect()->route('tasks.index')->with('error', 'Task not found!');
+        }
+
+        $task->delete();
+
+        return redirect()->route('tasks.index')->with('status', 'Task deleted successfully!');
     }
 }
