@@ -35,4 +35,5 @@
             </tbody>
         </table>
     </div>
+    <a href="{{route('tasks.create')}}" class="btn btn-primary p-3 my-4">Aggiungi un nuovo to Do -></a>
 @endsection
