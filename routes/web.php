@@ -16,5 +16,6 @@ use App\Http\Controllers\TasksController;
 */
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
+Route::get('/about', [PagesController::class, 'about'])->name('about');
 
 Route::resource('tasks', TasksController::class);

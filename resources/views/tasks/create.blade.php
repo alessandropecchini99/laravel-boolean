@@ -82,7 +82,7 @@
             </div>
         </div>
 
-
+        <a class="btn btn-secondary" href="/tasks">Back</a>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 @endsection
