@@ -4,7 +4,7 @@
     
     <div class="show">
 
-        <div class="image" style="width: 100px; aspect-ratio: 1 / 1;">
+        <div class="image">
             <img src="{{ $task->image }}" alt="{{ $task->title }}">
         </div>
 
