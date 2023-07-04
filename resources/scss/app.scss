@@ -1,4 +1,10 @@
 /*resources/scss/app.scss*/
+@use "partials/todos-index";
 @import "~bootstrap/scss/bootstrap";
 
 // My Style
+body {
+    //background-color: grey;
+    //color: white;
+    height: 100vh;
+}

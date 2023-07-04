@@ -2,11 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;   //Da aggiungere
 
 class TasksController extends Controller
 {
+
+    private $validations = [
+        'done'          => 'required|boolean',
+        'urgent'        => 'required|boolean',
+        'creation_date' => 'required|date',
+        'expire_date'   => 'required|date',
+        'title'         => 'required|string|max:50',
+        'details'       => 'required|string',
+        'image'         => 'required|string|max:300',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +27,8 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $task = Task::all();
-        return view('tasks.index', compact('task'));
+        $tasks = Task::all();
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -25,7 +38,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        //
+        return view('comics.create');
     }
 
     /**
@@ -36,7 +49,24 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //data validation
+        $request->validate($this->validations);
+
+        $data = $request->all();
+
+        $newTask = new Task();
+
+        $newTask->done              = $data['done'];
+        $newTask->urgent            = $data['urgent'];
+        $newTask->creation_date     = $data['creation_date'];
+        $newTask->expire_date       = $data['expire_date'];
+        $newTask->title             = $data['title'];
+        $newTask->details           = $data['details'];
+        $newTask->image             = $data['image'];
+
+        $newTask->save();
+
+        return redirect()->route('tasks.index', ['task' => $newTask->id])->with('status', 'Task created successfully!');
     }
 
     /**
@@ -47,7 +77,6 @@ class TasksController extends Controller
      */
     public function show(Task $task)
     {
-        //
     }
 
     /**
@@ -58,7 +87,7 @@ class TasksController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -70,7 +99,20 @@ class TasksController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        // $request->validate($this->validations);    $validation da aggiungere
+
+        $data = $request->all();
+
+        $task->title = $data['title'];
+        $task->details = $data['details'];
+        $task->image = $data['image'];
+        $task->creation_date = $data['creation_date'];
+        $task->expire_date = $data['expire_date'];
+        $task->done = $data['done'];
+        $task->urgent = $data['urgent'];
+        $task->update();
+
+        return to_route('tasks.show', ['task' => $task->id]);
     }
 
     /**

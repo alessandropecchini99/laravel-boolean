@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +17,4 @@ use App\Http\Controllers\TaskController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
-Route::resource('tasks', TaskController::class);
+Route::resource('tasks', TasksController::class);
