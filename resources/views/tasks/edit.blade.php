@@ -36,7 +36,7 @@
 
         <div class="mb-4">
             <label for="creation_date" class="form-label">Creation Date</label>
-            <input type="text" class="form-control @error('creation_date') is-invalid @enderror" id="creation_date"
+            <input type="date" class="form-control @error('creation_date') is-invalid @enderror" id="creation_date"
                 name="creation_date" value="{{ old('creation_date', $task->creation_date) }}">
             <div class="invalid-feedback">
                 @error('creation_date')
@@ -48,7 +48,7 @@
         <div class="mb-4">
             <label for="
             expire_date" class="form-label">Expire Date</label>
-            <input type="text" class="form-control @error('
+            <input type="date" class="form-control @error('
             expire_date') is-invalid @enderror"
                 id="
             expire_date" name="
@@ -64,8 +64,9 @@
 
         <div class="mb-4">
             <label for="done" class="form-label">Done</label>
-            <input type="text" class="form-control @error('done') is-invalid @enderror" id="done "
-                value="{{ old('done', $task->done) }}" name="done">
+            <input type="hidden" name="urgent" value="0">
+            <input type="checkbox" class="form-check-input @error('urgent') is-invalid @enderror" id="urgent"
+                name="urgent" value="1" {{ old('urgent') ? 'checked' : '' }}>
             <div class="invalid-feedback">
                 @error('done')
                     {{ $message }}
@@ -75,8 +76,9 @@
 
         <div class="mb-4">
             <label for="urgent" class="form-label">Urgent</label>
-            <input type="text" class="form-control @error('urgent') is-invalid @enderror" id="urgent" name="urgent"
-                value="{{ old('urgent', $task->urgent) }}">
+            <input type="hidden" name="urgent" value="0">
+            <input type="checkbox" class="form-check-input @error('urgent') is-invalid @enderror" id="urgent"
+                name="urgent" value="1" {{ old('urgent') ? 'checked' : '' }}>
             <div class="invalid-feedback">
                 @error('urgent')
                     {{ $message }}
