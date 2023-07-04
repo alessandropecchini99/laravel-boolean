@@ -60,7 +60,7 @@
             <label for="done" class="form-label">Done</label>
             <input type="hidden" name="done" value="0">
             <input type="checkbox" class="form-check-input @error('done') is-invalid @enderror" id="done"
-                name="done" value="1" @checked(old('dona', $task->done))>
+                name="done" value="1" @checked(old('done', $task->done))>
             <div class="invalid-feedback">
                 @error('done')
                     {{ $message }}
