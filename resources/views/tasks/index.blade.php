@@ -18,6 +18,7 @@
 					<th>Creation Date</th>
 					<th>Expire Date</th>
 					<th>Actions</th>
+					<th>Completed</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,6 +36,19 @@
 								@method('DELETE')
 								<button type="submit" class="btn btn-danger btn-sm">Delete</button>
 							</form>
+						</td>
+						<td>
+							<div class="mb-4">
+								<label for="done" class="form-label">Done</label>
+								<input type="hidden" name="done" value="0">
+								<input type="checkbox" class="form-check-input @error('done') is-invalid @enderror" id="done" name="done"
+									value="1" @checked(old('dona', $task->done))>
+								<div class="invalid-feedback">
+									@error('done')
+										{{ $message }}
+									@enderror
+								</div>
+							</div>
 						</td>
 					</tr>
 				@endforeach
