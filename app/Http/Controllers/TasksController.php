@@ -19,6 +19,13 @@ class TasksController extends Controller
         'image'         => 'required|string|max:300',
     ];
 
+    private $validationMessages = [
+        'required' => 'Il campo :attribute è richiesto.',
+        'boolean' => 'Il campo :attribute deve essere Vero o Falso.',
+        'date' => 'Il campo :attribute deve essere una data valida.',
+        'max' => 'Il campo :attribute non deve superare i :max caratteri.',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +56,7 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         //data validation
-        $request->validate($this->validations);
+        $request->validate($this->validations, $this->validationMessages);
 
         $data = $request->all();
 
