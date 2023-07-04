@@ -41,7 +41,7 @@
 
     <div class="d-grid gap-2 d-md-block">
         <button class="btn btn-primary">
-            Crea la Tua To Do List ->
+            Guarda la Tua To Do List ->
         </button>
       </div>
 </section>
