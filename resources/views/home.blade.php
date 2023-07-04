@@ -40,9 +40,7 @@
     </table>
 
     <div class="d-grid gap-2 d-md-block">
-        <button class="btn btn-primary">
-            Guarda la Tua To Do List ->
-        </button>
+        <a href="{{ route('tasks.index') }}" class="btn btn-primary">Guarda la Tua To Do List -></a>
       </div>
 </section>
 @endsection
