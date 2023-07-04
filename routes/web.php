@@ -15,7 +15,10 @@ use App\Http\Controllers\TasksController;
 |
 */
 
-Route::get('/', [PagesController::class, 'home'])->name('home');
-Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::group(['prefix' => ''], function () {
+    Route::get('/', [PagesController::class, 'home'])->name('home');
+    Route::get('/tasks', [PagesController::class, 'tasks'])->name('tasks');
+    Route::get('/about', [PagesController::class, 'about'])->name('about');
+});
 
 Route::resource('tasks', TasksController::class);
