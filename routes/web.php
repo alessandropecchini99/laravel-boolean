@@ -21,6 +21,6 @@ Route::group(['prefix' => ''], function () {
     Route::get('/about', [PagesController::class, 'about'])->name('about');
 });
 
-Route::post('/tasks/{task}/toggle_done', [App\Http\Controllers\TasksController::class, 'toggleDone'])->name('tasks.toggle_done');
+Route::post('/tasks/{task}/toggle_done', [TasksController::class, 'toggleDone'])->name('tasks.toggle_done');
 
 Route::resource('tasks', TasksController::class);
