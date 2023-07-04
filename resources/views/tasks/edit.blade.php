@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
 @section('contents')
+    <a class="btn btn-primary mt-4" href="{{ route('tasks.index') }}">Back</a>
+
     <form class="mt-4" method="POST" action="{{ route('tasks.update', ['task' => $task->id]) }}">
         @csrf
         @method('PUT')
@@ -18,7 +20,9 @@
 
         <div class="mb-4">
             <label for="details" class="form-label">Details</label>
-            <textarea class="form-control @error('details') is-invalid @enderror" id="details" rows="3" name="details">{{ old('details',$task->details) }}</textarea>
+            <textarea class="form-control @error('details') is-invalid @enderror" id="details" rows="3" name="details">
+                {{ old('details', $task->details) }}
+            </textarea>
         </div>
 
         <div class="mb-4">
@@ -44,17 +48,11 @@
         </div>
 
         <div class="mb-4">
-            <label for="
-            expire_date" class="form-label">Expire Date</label>
-            <input type="date" class="form-control @error('
-            expire_date') is-invalid @enderror"
-                id="
-            expire_date" name="
-            expire_date"
-                value="{{ old('expire_date', $task->expire_date) }}">
+            <label for="expire_date" class="form-label">Expire Date</label>
+            <input type="date" class="form-control @error('expire_date') is-invalid @enderror" id="expire_date"
+                name="expire_date" value="{{ old('expire_date', $task->expire_date) }}">
             <div class="invalid-feedback">
-                @error('
-                    expire_date')
+                @error('expire_date')
                     {{ $message }}
                 @enderror
             </div>
@@ -62,9 +60,9 @@
 
         <div class="mb-4">
             <label for="done" class="form-label">Done</label>
-            <input type="hidden" name="urgent" value="0">
-            <input type="checkbox" class="form-check-input @error('urgent') is-invalid @enderror" id="urgent"
-                name="urgent" value="1" {{ old('urgent') ? 'checked' : '' }}>
+            <input type="hidden" name="done" value="0">
+            <input type="checkbox" class="form-check-input @error('done') is-invalid @enderror" id="done"
+                name="done" value="1" @checked(old('dona', $task->done))>
             <div class="invalid-feedback">
                 @error('done')
                     {{ $message }}
@@ -76,7 +74,7 @@
             <label for="urgent" class="form-label">Urgent</label>
             <input type="hidden" name="urgent" value="0">
             <input type="checkbox" class="form-check-input @error('urgent') is-invalid @enderror" id="urgent"
-                name="urgent" value="1" {{ old('urgent') ? 'checked' : '' }}>
+                name="urgent" value="1" @checked(old('urgent', $task->urgent))>
             <div class="invalid-feedback">
                 @error('urgent')
                     {{ $message }}
