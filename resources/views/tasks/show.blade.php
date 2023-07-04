@@ -22,6 +22,7 @@
 				<li class="list-group-item"><span>Expire Date:</span> {{ $task->expired_date }}</li>
 				<li class="list-group-item"><span>Done:</span> {{ $task->done }}</li>
 				<li class="list-group-item"><span>Urgent:</span> {{ $task->urgent }}</li>
+				<li>prova</li>
 			</ul>
 
 			<a class="btn btn-secondary" href="/tasks">Back</a>
